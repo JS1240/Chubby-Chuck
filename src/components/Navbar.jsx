@@ -5,11 +5,11 @@ const Navbar = () => {
   return (
     <header className="w-full py-5 sm:px10 px-5 flex justify-between items-center">
       <nav className="flex w-full screen-max-width">
-        <img src={chubbyImg} alt="Chubby" width={14} height={18} />
+        <img src={chubbyImg} alt="Chubby" width={56} height={72} />
 
-        <div className="flex flex-1 justify-center max-sm:hidden">
+        <div className="flex flex-1 justify-center max-sm:hidden h-16 p-4">
           {navLists.map((nav) => (
-            <div key={nav} className="px-5 text-sm cursor-pointer text-grey hover:text-blue transition-all">
+            <div key={nav} className="px-7 text-m cursor-pointer text-grey hover:text-black transition-all">
               {nav}
             </div>
             ))}

@@ -1,14 +1,14 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Highlights from './components/Highlights';
+import Menu from './components/Menu';
 
 
 const App = () => {
   return (
-    <main className="bg-black">
+    <main className="bg-blue">
       <Navbar />
       <Hero />
-      <Highlights />
+      <Menu />
     </main>
   )
 }

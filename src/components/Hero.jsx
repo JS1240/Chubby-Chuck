@@ -21,10 +21,11 @@ const Hero = () => {
 
   useGSAP(() => {
     gsap.to('#hero', { opacity: 1, delay: 1.5, duration: 1 })
+    gsap.to('#cta', { opacity: 1, y: -50, delay: 2.5, duration: 1 })
   }, [])
 
   return (
-    <section className="w-full nav-height bg-black relative">
+    <section className="w-full nav-height bg-white relative">
       <div className="h-5/6 w-full flex-center flex-col">
         <p id="hero" className="hero-title">Chubby Chuck Smash Burgers</p>
         <div className="md:w-10/12 w-9/12">
@@ -33,6 +34,15 @@ const Hero = () => {
           </video>
         </div>
       </div>
+
+      <div 
+        id="cta"
+        className="flex flex-col items-center opacity-0 translate-y-20"
+      >
+        <a href="higlights" className="btn">Menu</a>
+        <p className="font-normal text-xl text-black">Smash that button</p>
+      </div>
+
     </section>
   )
 }
