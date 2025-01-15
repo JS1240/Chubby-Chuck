@@ -42,6 +42,14 @@ canvas {
     @apply px-16 py-6 rounded-3xl bg-blue my-5 hover:bg-transparent border border-transparent hover:border hover:text-blue hover:border-blue hover:shadow-2xl hover:scale-105 transition-all duration-300;
   }
 
+  .btn-menu {
+    @apply px-4 py-2 rounded-3xl border-4 border-blue transition ease-in-out duration-300 bg-transparent text-blue font-bold text-5xl;
+  }
+  
+  .btn-menu:hover {
+    @apply scale-150 rotate-12 bg-blue text-white;
+  }
+
   .color-container {
     @apply flex items-center justify-center px-4 py-4 rounded-full bg-gray-300 backdrop-blur
   }
@@ -87,7 +95,7 @@ canvas {
   }
 
   .hero-title {
-    @apply text-center font-semibold text-3xl text-black opacity-0 max-md:mb-10
+    @apply text-center mb-14 font-extrabold leading-none tracking-tight text-5xl text-black opacity-0 max-md:mb-20
   }
 
   .hiw-title {
