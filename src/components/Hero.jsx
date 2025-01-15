@@ -1,50 +1,72 @@
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { heroVideo, smallHeroVideo } from "../utils";
-import { useEffect, useState } from "react";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { heroVideo, smallHeroVideo } from '../utils';
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
-  const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
+  const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo);
 
   const handleVideoSrcSet = () => {
     if (window.innerWidth < 760) {
-      setVideoSrc(smallHeroVideo)
+      setVideoSrc(smallHeroVideo);
     } else {
-      setVideoSrc(heroVideo)
+      setVideoSrc(heroVideo);
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener('resize', handleVideoSrcSet)
-    return () => window.removeEventListener('resize', handleVideoSrcSet)
-  }, [])
+    window.addEventListener('resize', handleVideoSrcSet);
+
+    return () => {
+      window.removeEventListener('resize', handleVideoSrcSet);
+    };
+  }, []);
 
   useGSAP(() => {
-    gsap.to('#hero', { opacity: 1, delay: 1.5, duration: 1 })
-    gsap.to('#cta', { opacity: 1, y: -50, delay: 2.5, duration: 1 })
-  }, [])
+    gsap.to('#hero', { opacity: 1, y: 0, duration: 1, delay: 0.5 });
+    gsap.to('#cta', { opacity: 1, y: 0, duration: 1, delay: 1.5, stagger: 0.25 });
+  }, []);
+
+  const scrollToCTA = (event) => {
+    event.preventDefault();
+    document.querySelector('#features').scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section className="w-full nav-height bg-white relative">
-      <div className="h-5/6 w-full flex-center flex-col">
-        <p id="hero" className="hero-title">Chubby Chuck Smash Burgers</p>
-        <div className="md:w-10/12 w-9/12">
-          <video className="pointer-events-none" autoPlay muted playsInline={true} key={videoSrc}>
-            <source src={videoSrc} type="video/mp4"/>
+      <div className="h-3.9/5 w-full flex-center flex-col">
+        <p
+          id="hero"
+          className="hero-title mb-6 hover:scale-105 transition-all duration-300 ease-in-out"
+        >
+          Chubby Chuck Smash Burgers
+        </p>
+        <div className="md:w-10/12 w-9/12 max-w-screen-lg mx-auto">
+          <video
+            className="pointer-events-none rounded-2xl shadow-2xl"
+            autoPlay
+            muted
+            playsInline
+            key={videoSrc}
+          >
+            <source src={videoSrc} type="video/mp4" />
           </video>
         </div>
       </div>
 
-      <div 
+      <div
         id="cta"
-        className="flex flex-col items-center opacity-0 translate-y-20"
+        className="flex flex-col items-center opacity-0 translate-y-20 mb-12"
       >
-        <a href="higlights" className="btn">Menu</a>
-        <p className="font-normal text-xl text-black">Smash that button</p>
+        <a id="cta-button" href="#features" className="btn" onClick={scrollToCTA}>
+          Menu
+        </a>
+        <p id="cta" className="hiw-title text-xl text-gray">
+          Where Burgers Meet Perfection
+        </p>
       </div>
-
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
